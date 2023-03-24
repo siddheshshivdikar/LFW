@@ -1,0 +1,60 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card border-0">
+        <div class="card-body">
+          <h2 class="card-title text-center mb-4">Login</h2>
+          <form>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                aria-describedby="emailHelp"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <div class="input-group">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  required
+                />
+                <span class="input-group-text">
+                  <span class="password-toggle" id="password-toggle">Show</span>
+                </span>
+              </div>
+            </div>
+            <div class="mb-3">
+              <div id="forgotPassword" class="form-text text-dark">
+                Forgot password?
+              </div>
+            </div>
+            <div class="d-grid gap-2">
+              <button
+                type="submit"
+                class="btn bg-primary text-light rounded-pill"
+              >
+                Sign in
+              </button>
+            </div>
+            <hr />
+          </form>
+          <div class="d-grid gap-2">
+            <button
+              type="submit"
+              class="btn btn-block border rounded-pill"
+              onclick="loadContent('registration')"
+            >
+              New to LFW? Join now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

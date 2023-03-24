@@ -1,0 +1,105 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title text-center mb-4">Register</h2>
+            <form>
+              <div class="mb-3">
+                <label for="email" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" required>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" required>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Confirm password</label>
+                <input type="password" class="form-control" id="confirm" required>
+              </div>
+              <div class="d-grid gap-2">
+                <button type="submit" 
+              class="btn bg-primary text-light rounded-pill">Agree & join</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<script >
+    // Select the login link
+const loginLink = document.querySelector('#login-link');
+
+// Add a click event listener to the login link
+loginLink.addEventListener('click', (event) => {
+  // Prevent the default behavior of the link
+  event.preventDefault();
+
+  // Create a login form
+  const loginForm = `
+    <form id="login-form">
+      <label for="email">Email</label>
+      <input type="email" name="email" required>
+
+      <label for="password">Password</label>
+      <input type="password" name="password" required>
+
+      <button type="submit">Login</button>
+    </form>
+  `;
+
+  // Replace the content of the app with the login form
+  document.querySelector('#app').innerHTML = loginForm;
+
+  // Select the login form
+  const form = document.querySelector('#login-form');
+
+  // Add a submit event listener to the form
+  form.addEventListener('submit', (event) => {
+    // Prevent the default behavior of the form
+    event.preventDefault();
+
+    // Get the form data
+    const formData = new FormData(form);
+
+    // Send a POST request to the server with the form data
+    fetch('/auth/login', {
+      method: 'POST',
+      body: formData
+    })
+      .then(response => response.json())
+      .then(data => {
+        // Clear the form
+        form.reset();
+
+        // Store the token in local storage
+        localStorage.setItem('token', data.token);
+
+        // Redirect to the home page
+        loadPage('/');
+      })
+      .catch(error => console.error(error));
+  });
+});
+
+// Function to load a page
+function loadPage(url) {
+  // Fetch the page content
+  fetch(url)
+    .then(response => response.text())
+    .then(data => {
+      // Replace the content of the app container with the page content
+      document.querySelector('#app').innerHTML = data;
+    })
+    .catch(error => console.error(error));
+}
+
+// Load the home page by default
+loadPage('/');
+
+</script>

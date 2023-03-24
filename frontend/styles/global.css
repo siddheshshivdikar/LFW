@@ -1,0 +1,38 @@
+/* base styles, feel free to edit */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial;
+}
+
+:root {
+--bs-dark-rgb: 10,
+    102,
+    194;
+--bs-primary-rgb:10, 102, 194;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.hero-image {
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+  }
+
+.navbar-brand {
+    width: 120px;
+    height: 40px;
+}
+.navbar-brand::after {
+    content: "LurkForWork";
+    color: #fff;
+}
+@media (max-width: 768px) {
+    .navbar-brand::after {
+        content: "LFW";
+    }
+}
